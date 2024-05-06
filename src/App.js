@@ -3,6 +3,13 @@ import React from 'react';
 import './App.css';
 
 function App() {
+  function clickMe(){
+    console.log("i was clicked")
+  }
+  const [count, setCount] = React.useState(0)
+  function add(){
+    console.log("Add")
+  }
   return (
     <div className="App">
       <header className="App-header">
@@ -10,10 +17,12 @@ function App() {
         <h4>React Course - Project 3</h4>
       </header>
       <div className='input-fields'>
-<input></input>
-<input></input>
+<input placeholder='Top Text....'></input>
+<input placeholder='Bottom Text...'></input>
       </div>
-      <button type='button' className='meme-button'>Get a new meme image <i className='mdi mdi-panorama-variant'></i></button>
+      <button onClick={clickMe} className='btn meme-button'>Get a new meme image <i className='mdi mdi-panorama-variant'></i></button>
+      <h1>{count}</h1>
+      <button onClick={add}></button>
     </div>
   );
 }
