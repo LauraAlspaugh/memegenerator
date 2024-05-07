@@ -12,6 +12,14 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
+.meme-image{
+  object-fit: cover;
+  position: center;
+  width: 500px;
+  height: 600px;
+  border-radius: 7px;
+  border: 2px #8024A1 solid ;
+}
 .meme-button{
   background-color: #8024A1;
   color: white;
