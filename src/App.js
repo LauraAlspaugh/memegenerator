@@ -9,6 +9,8 @@ function App() {
   const [count, setCount] = React.useState(0)
   function add(){
     console.log("Add")
+    setCount(count + 1)
+  
   }
   return (
     <div className="App">
