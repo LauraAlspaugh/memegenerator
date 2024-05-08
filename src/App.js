@@ -1,16 +1,16 @@
 import logo from './logo.svg';
 import React from 'react';
+import memesData from './memesData.js';
 import './App.css';
 
 function App() {
-  function clickMe(){
-    console.log("i was clicked")
-  }
-  const [count, setCount] = React.useState(0)
-  function add(){
-    console.log("Add")
-    setCount(count + 1)
+ 
   
+  const [memeImage, setMemeImage] = React.useState("")
+  function getMemeImage() {
+    const memesArray = memesData.data.memes
+    const randomNumber = Math.floor(Math.random() * memesArray.length)
+    setMemeImage(memesArray[randomNumber].url)
   }
   return (
     <div className="App">
@@ -22,12 +22,11 @@ function App() {
 <input placeholder='Top Text....'></input>
 <input placeholder='Bottom Text...'></input>
       </div>
-      <button onClick={clickMe} className='btn meme-button'>Get a new meme image <i className='mdi mdi-panorama-variant'></i></button>
+      <button onClick={getMemeImage} className='btn meme-button'>Get a new meme image <i className='mdi mdi-panorama-variant'></i></button>
       <div>
-        <img className='meme-image' alt='meme' src='https://images.unsplash.com/photo-1533738363-b7f9aef128ce?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bWVtZXxlbnwwfHwwfHx8MA%3D%3D'></img>
+        <img className='meme-image' alt='meme' src={memeImage}></img>
       </div>
-      <h1>{count}</h1>
-      <button onClick={add}></button>
+    
     </div>
   );
 }
