@@ -21,6 +21,10 @@ function App() {
         randomImage: url
     }))
   }
+  const [messages, setMessages] = React.useState(["a", "b"])
+    
+    
+    
   return (
     <div className="App">
       <header className="App-header">
@@ -32,6 +36,12 @@ function App() {
 <Header user = {user}/>
         </h2>
       </div>
+        <div>
+            {
+                messages.length > 0 && 
+                <h1>You have {messages.length} unread messages!</h1>
+            }
+        </div>
       <div className='input-fields'>
 <input placeholder='Top Text....'></input>
 <input placeholder='Bottom Text...'></input>
