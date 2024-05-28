@@ -3,6 +3,7 @@ import React from 'react';
 import memesData from './memesData.js';
 import './App.css';
 import Header from './Header.jsx';
+import Form from './Form.jsx';
 
 function App() {
  const [user, setUser] = React.useState("Matt")
@@ -43,6 +44,7 @@ function App() {
             }
         </div>
       <div className='input-fields'>
+        <Form/>
 <input placeholder='Top Text....'></input>
 <input placeholder='Bottom Text...'></input>
       </div>
