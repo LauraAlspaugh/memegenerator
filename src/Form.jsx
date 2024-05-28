@@ -11,10 +11,10 @@ export default function Form() {
             favColor: ""
         }
     )
-    console.log(formData.favColor)
+    // console.log(formData.favColor)
     
     function handleChange(event) {
-        console.log(event)
+        // console.log(event)
         const {name, value, type, checked} = event.target
         setFormData(prevFormData => {
             return {
@@ -22,6 +22,10 @@ export default function Form() {
                 [name]: type === "checkbox" ? checked : value
             }
         })
+    }
+    function handleSubmit(event) {
+        event.preventDefault()
+    console.log(formData)
     }
     
     return (
@@ -118,6 +122,7 @@ export default function Form() {
                 <option value="indigo">Indigo</option>
                 <option value="violet">Violet</option>
             </select>
+            <button onSubmit={handleSubmit}>Submit</button>
         </form>
     )
 }
