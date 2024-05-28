@@ -44,7 +44,6 @@ function App() {
             }
         </div>
       <div className='input-fields'>
-        <Form/>
 <input placeholder='Top Text....'></input>
 <input placeholder='Bottom Text...'></input>
       </div>
@@ -52,6 +51,7 @@ function App() {
       <div>
         <img className='meme-image' alt='meme' src={memeImage.randomImage}></img>
       </div>
+        <Form/>
     
     </div>
   );
