@@ -23,6 +23,13 @@ function App() {
     }))
   }
   const [messages, setMessages] = React.useState(["a", "b"])
+  function handleChange(event){
+    const {name, value } = event.target
+    setMemeImage(prevMeme => ({
+      ...prevMeme,
+      [name]: value
+  }))
+  }
     
     
     
@@ -44,12 +51,32 @@ function App() {
             }
         </div>
       <div className='input-fields'>
-<input placeholder='Top Text....'></input>
-<input placeholder='Bottom Text...'></input>
+{/* <input placeholder='Top Text....'></input>
+<input placeholder='Bottom Text...'></input> */}
+<div className="form">
+                <input 
+                    type="text"
+                    placeholder="Top text"
+                    className="form--input"
+                    name="topText"
+                    value={memeImage.topText}
+                    onChange={handleChange}
+                />
+                <input 
+                    type="text"
+                    placeholder="Bottom text"
+                    className="form--input"
+                    name="bottomText"
+                    value={memeImage.bottomText}
+                    onChange={handleChange}
+                />
+                </div>
       </div>
       <button onClick={getMemeImage} className='btn meme-button'>Get a new meme image <i className='mdi mdi-panorama-variant'></i></button>
-      <div>
-        <img className='meme-image' alt='meme' src={memeImage.randomImage}></img>
+      <div className='meme'>
+        <img className='meme--image' alt='meme' src={memeImage.randomImage}></img>
+        <h2 className='meme--text top'>{memeImage.topText}</h2>
+        <h2 className='meme--text bottom'>{memeImage.bottomText}</h2>
       </div>
         <Form/>
     
