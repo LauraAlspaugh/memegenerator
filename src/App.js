@@ -44,15 +44,14 @@ function App() {
 <Header user = {user}/>
         </h2>
       </div>
-        <div>
+        {/* <div>
             {
                 messages.length > 0 && 
                 <h1>You have {messages.length} unread messages!</h1>
             }
-        </div>
+        </div> */}
       <div className='input-fields'>
-{/* <input placeholder='Top Text....'></input>
-<input placeholder='Bottom Text...'></input> */}
+
 <div className="form">
                 <input 
                     type="text"
@@ -78,7 +77,7 @@ function App() {
         <h2 className='meme--text top'>{memeImage.topText}</h2>
         <h2 className='meme--text bottom'>{memeImage.bottomText}</h2>
       </div>
-        <Form/>
+        {/* <Form/> */}
     
     </div>
   );
