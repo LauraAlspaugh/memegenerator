@@ -7,6 +7,8 @@ import Form from './Form.jsx';
 
 function App() {
  const [user, setUser] = React.useState("Matt")
+ const [starWarsData, setStarWarsData] = React.useState({})
+//  const [count, setCount] = React.useState(0)
   
   const [memeImage, setMemeImage] = React.useState({
     topText: "",
@@ -30,8 +32,14 @@ function App() {
       [name]: value
   }))
   }
+  fetch("https://swapi.dev/api/people/1")
+        .then(res => res.json())
+        .then(data => setStarWarsData(data))
     
     
+    // React.useEffect(()=> {
+    //   console.log("Effect function ran!")
+    // } , [count])
     
   return (
     <div className="App">
@@ -51,7 +59,9 @@ function App() {
             }
         </div> */}
       <div className='input-fields'>
-
+      <div>
+            <pre>{JSON.stringify(starWarsData, null, 2)}</pre>
+        </div>
 <div className="form">
                 <input 
                     type="text"
