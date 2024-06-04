@@ -1,24 +1,22 @@
 import logo from './logo.svg';
 import React from 'react';
-import memesData from './memesData.js';
 import './App.css';
 import Header from './Header.jsx';
 import Form from './Form.jsx';
 
 function App() {
  const [user, setUser] = React.useState("Matt")
- const [starWarsData, setStarWarsData] = React.useState({})
-//  const [count, setCount] = React.useState(0)
+
   
   const [memeImage, setMemeImage] = React.useState({
     topText: "",
           bottomText: "",
           randomImage: "http://i.imgflip.com/1bij.jpg" 
   })
+  const [allMemes, setAllMemes] = React.useState([])
   function getMemeImage() {
-    const memesArray = memesData.data.memes
-    const randomNumber = Math.floor(Math.random() * memesArray.length)
-    const url = memesArray[randomNumber].url
+    const randomNumber = Math.floor(Math.random() * allMemes.length)
+    const url = allMemes[randomNumber].url
     setMemeImage(prevMeme => ({
         ...prevMeme,
         randomImage: url
@@ -32,14 +30,13 @@ function App() {
       [name]: value
   }))
   }
-  fetch("https://swapi.dev/api/people/1")
-        .then(res => res.json())
-        .then(data => setStarWarsData(data))
     
     
-    // React.useEffect(()=> {
-    //   console.log("Effect function ran!")
-    // } , [count])
+     React.useEffect(()=> {
+      fetch("https://api.imgflip.com/get_memes")
+      .then(res => res.json())
+        .then(data => setAllMemes(data.data.memes))
+     } , [])
     
   return (
     <div className="App">
@@ -52,16 +49,9 @@ function App() {
 <Header user = {user}/>
         </h2>
       </div>
-        {/* <div>
-            {
-                messages.length > 0 && 
-                <h1>You have {messages.length} unread messages!</h1>
-            }
-        </div> */}
+    
       <div className='input-fields'>
-      <div>
-            <pre>{JSON.stringify(starWarsData, null, 2)}</pre>
-        </div>
+    
 <div className="form">
                 <input 
                     type="text"
@@ -87,7 +77,6 @@ function App() {
         <h2 className='meme--text top'>{memeImage.topText}</h2>
         <h2 className='meme--text bottom'>{memeImage.bottomText}</h2>
       </div>
-        {/* <Form/> */}
     
     </div>
   );
